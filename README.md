@@ -16,6 +16,7 @@ BigQuery (SQL), Google Sheets for charts.
 - Excluded 8 delivered orders with no delivery date.
 - 547 orders have 2 to 3 reviews; kept the most recent review per order.
 - Excluded orders that were never delivered (shipped, canceled, unavailable, invoiced, processing).
+- Category_translation loaded with its header as a data row; rebuilt the table with correct column names (71 categories).
 
 ## Analysis
 | File | Question |
