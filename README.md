@@ -18,8 +18,8 @@ BigQuery (SQL), Google Sheets for charts.
 ## Analysis
 | File | Question |
 | --- | --- |
-| 01_explore.sql | Data checks and exploration |
-| 02_... | (add as you go) |
+| 01_explore_orders.sql | Row counts, order statuses, date range |
+| 02_data_quality_checks.sql | Table counts, missing delivery dates, duplicate reviews |
 
 ## Key findings
 1. (add after Step 2)
