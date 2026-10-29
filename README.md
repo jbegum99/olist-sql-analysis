@@ -13,7 +13,9 @@ BigQuery (SQL), Google Sheets for charts.
 ## Data cleaning notes
 - Kept only orders with status `delivered` and a delivery date (about 97% of orders).
 - order_reviews has about 800 duplicate review_ids; kept one review per order.
-- (add more as you find them)
+- Excluded 8 delivered orders with no delivery date.
+- 547 orders have 2 to 3 reviews; kept the most recent review per order.
+- Excluded orders that were never delivered (shipped, canceled, unavailable, invoiced, processing).
 
 ## Analysis
 | File | Question |
