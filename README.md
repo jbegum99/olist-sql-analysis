@@ -24,6 +24,7 @@ BigQuery (SQL), Google Sheets for charts.
 | 02_data_quality_checks.sql | Table counts, missing delivery dates, duplicate reviews |
 | 03_monthly_revenue.sql | Monthly revenue, orders and average order value |
 | 04_top_categories.sql | Top 10 product categories by revenue |
+| 05_revenue_by_state.sql | Revenue, orders and average order value by customer state |
 
 ## Key findings
 1. Strong growth: monthly revenue went from about $112K (Jan 2017) to about $988K (Nov 2017), roughly 9x in 10 months.
@@ -33,6 +34,9 @@ BigQuery (SQL), Google Sheets for charts.
 5. Top 10 categories make up about 62% of revenue. Health and beauty leads at about $1.23M (9.3%).
 6. Watches and gifts ranks #2 in revenue despite fewer orders than bed/bath/table, because it earns about $212 per order versus about $110.
 7. Some categories win on volume (bed/bath/table) and others on price (watches and gifts), which matters for marketing and inventory decisions.
+8. 8. Revenue is concentrated: São Paulo (SP) alone is 38% of revenue, and the top 3 states (SP, RJ, MG) are about 63%.
+9. The top 5 states (SP, RJ, MG, RS, PR) account for about 74% of revenue.
+10. Average order value is lowest in SP (about $125) and higher in smaller, more remote states, such as PB (about $218), AL (about $199) and AP (about $200).
 
 ## Recommendations
 1.
@@ -43,3 +47,4 @@ BigQuery (SQL), Google Sheets for charts.
 - Sept to Dec 2016 has almost no orders (1 order each in Sept and Dec, none in Nov), so 2016 is excluded from trend charts.
 - Analysis uses delivered orders only, and the last delivered orders are from Aug 2018.
 - Revenue excludes shipping costs.
+- Average order value for small states (such as AP, AC and RR) is based on very few orders (under 150), so it is less reliable.
