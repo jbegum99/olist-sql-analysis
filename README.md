@@ -13,7 +13,7 @@ BigQuery (SQL), Google Sheets for charts.
 
 ## Data cleaning notes
 - Kept only orders with status `delivered` and a delivery date (about 97% of orders). This excludes 8 delivered orders with no delivery date and all orders never delivered (shipped, canceled, unavailable, invoiced, processing).
-- order_reviews has about 800 duplicate review_ids, and 547 orders have 2 to 3 reviews. Keep the most recent review per order.
+- order_reviews has about 800 duplicate review_ids, and 547 orders have 2 to 3 reviews. Kept the most recent review per order.
 - category_translation loaded with its header as a data row; rebuilt the table with correct column names (71 categories).
 
 ## Analysis
@@ -26,6 +26,7 @@ BigQuery (SQL), Google Sheets for charts.
 | 04_top_categories.sql | Top 10 product categories by revenue |
 | 05_revenue_by_state.sql | Revenue, orders and average order value by customer state |
 | 06_delivery_delays.sql | Late delivery rate and delivery time, overall and by state |
+| 07_reviews_late_vs_ontime.sql | Review scores for late vs on-time orders, and by days late |
 
 ## Key findings
 1. Strong growth: monthly revenue went from about $112K (Jan 2017) to about $988K (Nov 2017), roughly 9x in 10 months.
@@ -42,10 +43,15 @@ BigQuery (SQL), Google Sheets for charts.
 12. The average delivery takes 12.5 days.
 13. Late rates vary widely by state. Alagoas (AL) is worst at 21.4%, followed by MA (17.4%) and SE (15.2%). São Paulo is at 4.5%.
 14. Rio de Janeiro (RJ), the second-biggest state by revenue, has a 12.1% late rate, higher than most of the top-revenue states.
+15. 15. Late deliveries sharply lower review scores: late orders average 2.27 stars versus 4.29 for on-time orders, a gap of 2.0 stars.
+16. 62.4% of late orders get a 1 or 2 star review, versus 9.3% of on-time orders.
+17. The longer the delay, the worse the score: 1 to 3 days late averages 3.29, 4 to 7 days late averages 2.10, and 8 or more days late averages 1.70.
+18. Even a short delay costs about 1 star (4.29 on time versus 3.29 for 1 to 3 days late).
 
 ## Recommendations
-1.
-2.
+1. Prioritize reducing severe delays (8+ days late). These 2,781 orders average only 1.7 stars.
+2. Target logistics fixes in states with high late rates and meaningful revenue, such as Rio de Janeiro (12.1% late, about $1.76M revenue), and the northeast states (AL, MA, SE, BA).
+3. Set more realistic delivery estimates and send proactive delay notices, because even 1 to 3 days late costs about 1 star.
 
 ## Limitations
 - Data covers 2016 to 2018 only and is from one marketplace.
@@ -55,3 +61,5 @@ BigQuery (SQL), Google Sheets for charts.
 - Average order value for small states (such as AP, AC and RR) is based on very few orders (under 150), so it is less reliable.
 - Lateness is measured against Olist's own estimated delivery date, not an absolute speed standard. Some states (for example AM) have long delivery times (26 days) but few late orders, because estimates are padded.
 - The state analysis excludes states with fewer than 100 orders (AC, AP, RR).
+- This shows a strong association, not proof that lateness causes low scores. Late orders may differ in other ways, such as product type or region.
+- 153 late orders have no review and are excluded from the review analysis (6,381 of 6,534 late orders are included).
