@@ -1,5 +1,12 @@
 # Olist E-Commerce Analysis (SQL)
 
+## Summary
+- Revenue grew about 9x in 2017 and then flattened. Growth came from more orders, not bigger orders.
+- São Paulo drives 38% of revenue, and the top 10 categories make up about 62%.
+- Late deliveries (6.8% of orders) cut review scores from 4.29 to 2.27 stars, and the longer the delay, the worse the score.
+
+**Skills shown:** SQL (BigQuery), joins, CTEs, window functions (ROW_NUMBER, RANK, LAG), data cleaning, data visualization, business recommendations.
+
 ## Business question
 Which product categories and states drive revenue, and do late deliveries lower customer review scores?
 
@@ -38,14 +45,14 @@ BigQuery (SQL), Google Sheets for charts.
 5. Top 10 categories make up about 62% of revenue. Health and beauty leads at about $1.23M (9.3%).
 6. Watches and gifts ranks #2 in revenue despite fewer orders than bed/bath/table, because it earns about $212 per order versus about $110.
 7. Some categories win on volume (bed/bath/table) and others on price (watches and gifts), which matters for marketing and inventory decisions.
-8. 8. Revenue is concentrated: São Paulo (SP) alone is 38% of revenue, and the top 3 states (SP, RJ, MG) are about 63%.
+8. Revenue is concentrated: São Paulo (SP) alone is 38% of revenue, and the top 3 states (SP, RJ, MG) are about 63%.
 9. The top 5 states (SP, RJ, MG, RS, PR) account for about 74% of revenue.
 10. Average order value is lowest in SP (about $125) and higher in smaller, more remote states, such as PB (about $218), AL (about $199) and AP (about $200).
 11. 6.8% of delivered orders (6,534 of 96,470) arrived after the estimated date. Late orders were about 10.6 days late on average.
 12. The average delivery takes 12.5 days.
 13. Late rates vary widely by state. Alagoas (AL) is worst at 21.4%, followed by MA (17.4%) and SE (15.2%). São Paulo is at 4.5%.
 14. Rio de Janeiro (RJ), the second-biggest state by revenue, has a 12.1% late rate, higher than most of the top-revenue states.
-15. 15. Late deliveries sharply lower review scores: late orders average 2.27 stars versus 4.29 for on-time orders, a gap of 2.0 stars.
+15. Late deliveries sharply lower review scores: late orders average 2.27 stars versus 4.29 for on-time orders, a gap of 2.0 stars.
 16. 62.4% of late orders get a 1 or 2 star review, versus 9.3% of on-time orders.
 17. The longer the delay, the worse the score: 1 to 3 days late averages 3.29, 4 to 7 days late averages 2.10, and 8 or more days late averages 1.70.
 18. Even a short delay costs about 1 star (4.29 on time versus 3.29 for 1 to 3 days late).
@@ -76,6 +83,6 @@ BigQuery (SQL), Google Sheets for charts.
 - Revenue excludes shipping costs.
 - Average order value for small states (such as AP, AC and RR) is based on very few orders (under 150), so it is less reliable.
 - Lateness is measured against Olist's own estimated delivery date, not an absolute speed standard. Some states (for example AM) have long delivery times (26 days) but few late orders, because estimates are padded.
-- The state analysis excludes states with fewer than 100 orders (AC, AP, RR).
+- The late-delivery-by-state analysis excludes states with fewer than 100 orders (AC, AP, RR).
 - This shows a strong association, not proof that lateness causes low scores. Late orders may differ in other ways, such as product type or region.
 - 153 late orders have no review and are excluded from the review analysis (6,381 of 6,534 late orders are included).
