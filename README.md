@@ -53,6 +53,16 @@ BigQuery (SQL), Google Sheets for charts.
 20. Month-over-month growth was largest in Feb 2017 (+110%) and Nov 2017 (+52%). The biggest drop was Dec 2017 (-26.5%) after the Black Friday peak.
 21. Growth flattened in 2018, with monthly changes mostly between -13% and +15%.
 
+## Charts
+
+![Monthly revenue rose 9x in 2017, then plateaued in 2018](images/01_monthly_revenue.png)
+
+![Top 10 categories drive about 62% of revenue](images/02_top_categories.png)
+
+![Longer delivery delays mean worse review scores](images/03_reviews_by_delay.png)
+
+![Late delivery rate by state](images/04_late_rate_by_state.png)
+
 ## Recommendations
 1. Prioritize reducing severe delays (8+ days late). These 2,781 orders average only 1.7 stars.
 2. Target logistics fixes in states with high late rates and meaningful revenue, such as Rio de Janeiro (12.1% late, about $1.76M revenue), and the northeast states (AL, MA, SE, BA).
